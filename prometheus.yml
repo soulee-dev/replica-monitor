@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['mysqld-exporter-master:9104']
+  - job_name: 'mysql2'
+    static_configs:
+      - targets: ['mysqld-exporter-master2:9104']

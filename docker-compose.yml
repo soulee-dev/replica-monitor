@@ -1,0 +1,97 @@
+version: '3.2'
+
+x-mysql: &mysql
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: true
+    MYSQL_DATABASE: test
+
+x-mysqld-exporter: &mysqld-exporter
+  command:
+    - '--collect.global_status'
+    - '--collect.info_schema.innodb_metrics'
+    - '--collect.auto_increment.columns'
+    - '--collect.info_schema.processlist'
+    - '--collect.binlog_size'
+    - '--collect.perf_schema.tablelocks'
+    - '--collect.global_variables'
+    - '--collect.slave_status'
+
+services:
+  mysql-master:
+    <<: *mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    command: >
+      mysqld
+      --log-bin=mysql-bin.log
+      --server-id 1
+      --binlog-format=row
+      --gtid_mode=on
+      --enforce-gtid-consistency=on
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mysql-slave:
+    <<: *mysql
+    image: mysql:8.0
+    ports:
+      - 3307:3306
+    command: >
+      mysqld
+      --log-bin=mysql-bin.log
+      --server-id 2
+      --binlog-format=row
+      --gtid_mode=on
+      --enforce-gtid-consistency=on
+    volumes:
+      - ./slave-init.sql:/docker-entrypoint-initdb.d/slave-init.sql
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+
+  mysql-master2:
+    <<: *mysql
+    image: mysql:8.0
+    ports:
+      - 3308:3306
+    command: >
+      mysqld
+      --log-bin=mysql-bin.log
+      --server-id 3
+      --binlog-format=row
+      --gtid_mode=on
+      --enforce-gtid-consistency=on
+
+  mysqld-exporter-master:
+    <<: *mysqld-exporter
+    image: prom/mysqld-exporter:v0.13.0
+    environment:
+      DATA_SOURCE_NAME: root@(mysql-master:3306)/
+    ports:
+      - 9104:9104
+
+  mysqld-exporter-master2:
+    <<: *mysqld-exporter
+    image: prom/mysqld-exporter:v0.13.0
+    environment:
+      DATA_SOURCE_NAME: root@(mysql-master2:3306)/
+    ports:
+      - 9105:9104
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000

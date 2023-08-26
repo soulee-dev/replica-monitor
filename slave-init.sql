@@ -1,0 +1,8 @@
+CHANGE MASTER TO 
+  MASTER_HOST='mysql-master',
+  MASTER_USER='root',
+  MASTER_PASSWORD='',
+  MASTER_LOG_FILE='mysql-bin.000001',
+  MASTER_LOG_POS= 4;
+
+START SLAVE;
