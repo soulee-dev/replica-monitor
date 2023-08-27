@@ -6,7 +6,7 @@ import logging as log
 import pandas as pd
 from pymysqlreplication import BinLogStreamReader
 import time
-# import tqdm
+from tqdm import tqdm
 
 mysql_master_config = {
     'host': 'localhost',
@@ -56,6 +56,7 @@ for attempt in range(MAX_RETRIES):
             if master2_conn:
                 master2_conn.close()
             raise Exception("Failed to connect to MySQL")
+log.info("Connected to MySQL!")
 
 # close unnecessary connections
 slave_conn.close()
@@ -72,7 +73,7 @@ def execute_sql(sql):
 
 
 def create_table(num_tables, num_columns_per_table):
-    for i in range(num_tables):
+    for i in tqdm(range(num_tables)):
         columns = ", ".join([f"column_{j} VARCHAR(255)" for j in range(num_columns_per_table)])
         create_table_sql = f"CREATE TABLE table_{i} ({columns})"
         execute_sql(create_table_sql)
@@ -80,11 +81,11 @@ def create_table(num_tables, num_columns_per_table):
 
 def random_string(length=10):
     letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(length))
+    return ''.join(random.choice(letters) for _ in range(length))
 
 
 def insert_data(num_tables, num_columns_per_table, num_rows_per_table):
-    for i in range(num_rows_per_table):
+    for _ in tqdm(range(num_rows_per_table)):
         random_table = f"table_{random.randint(0, num_tables - 1)}"
         random_column = f"column_{random.randint(0, num_columns_per_table - 1)}"
 
@@ -124,22 +125,25 @@ if __name__ == "__main__":
     master_exporter = PyMyExporter(mysql_master_config['host'], 9104)
     master2_exporter = PyMyExporter(mysql_master2_config['host'], 9105)
 
+    log.info("Creating tables...")
     try:
         create_table(NUM_TABLES, NUM_COLUMNS_PER_TABLE)
     except Exception as e:
         log.error(e)
 
+    log.info("Inserting data...")
     insert_data(NUM_TABLES, NUM_COLUMNS_PER_TABLE, NUM_ROWS_PER_TABLE)
 
     stream = BinLogStreamReader(connection_settings=mysql_master2_config, server_id=100)
     stream.close()
 
+    log.info("Getting metrics...")
     metrics1 = master_exporter.get_metrics()
     metrics2 = master2_exporter.get_metrics()
     df_changed_summary = pd.DataFrame(diff_metrics(metrics1, metrics2))
     df_changed_summary.to_csv("diff_metrics.csv", index=False)
 
-    print("Done!")
+    log.info("Metrics saved to diff_metrics.csv")
 
     # close cursors and connections
     master_cursor.close()
