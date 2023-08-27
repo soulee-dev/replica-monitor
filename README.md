@@ -19,7 +19,6 @@ Before running Replica-Monitor, ensure you have the following installed:
 
 - Docker, Docker Compose
 - Python
-- [Any other required software or libraries]
 
 ### Installation
 
