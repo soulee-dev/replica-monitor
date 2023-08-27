@@ -137,6 +137,8 @@ if __name__ == "__main__":
     insert_data(NUM_TABLES, NUM_COLUMNS_PER_TABLE, NUM_ROWS_PER_TABLE)
 
     stream = BinLogStreamReader(connection_settings=mysql_master2_config, server_id=100)
+    for event in stream:
+        pass
     stream.close()
 
     log.info("Getting metrics...")
