@@ -8,6 +8,8 @@ from pymysqlreplication import BinLogStreamReader
 import time
 from tqdm import tqdm
 
+log.basicConfig(level=log.DEBUG)
+
 mysql_master_config = {
     'host': 'localhost',
     'port': 3306,
@@ -116,8 +118,6 @@ def diff_metrics(metrics1, metrics2):
 
 
 if __name__ == "__main__":
-    log.basicConfig(level=log.DEBUG)
-
     NUM_TABLES = 10
     NUM_COLUMNS_PER_TABLE = 10
     NUM_ROWS_PER_TABLE = 1000
