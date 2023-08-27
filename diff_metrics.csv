@@ -1,0 +1,159 @@
+metric_name,labels,metric1_value,metric2_value,difference
+go_gc_duration_seconds,{'quantile': '0'},0.00028817,0.000170454,-0.00011771599999999997
+go_gc_duration_seconds,{'quantile': '0.25'},0.000423358,0.000482784,5.942600000000001e-05
+go_gc_duration_seconds,{'quantile': '0.5'},0.000772668,0.00057214,-0.00020052800000000006
+go_gc_duration_seconds,{'quantile': '0.75'},0.001168271,0.000688364,-0.000479907
+go_gc_duration_seconds,{'quantile': '1'},0.001205527,0.000949489,-0.0002560380000000001
+go_gc_duration_seconds_sum,{},0.004417888,0.002863231,-0.001554657
+go_gc_duration_seconds_count,{},6.0,5.0,-1.0
+go_goroutines,{},8.0,9.0,1.0
+go_memstats_alloc_bytes,{},2339496.0,2557144.0,217648.0
+go_memstats_alloc_bytes_total,{},15283816.0,15040008.0,-243808.0
+go_memstats_buck_hash_sys_bytes,{},1448544.0,1447968.0,-576.0
+go_memstats_frees_total,{},140926.0,132967.0,-7959.0
+go_memstats_gc_cpu_fraction,{},9.095852218941276e-05,0.00011464147191116791,2.368294972175516e-05
+go_memstats_gc_sys_bytes,{},4993528.0,5046944.0,53416.0
+go_memstats_heap_alloc_bytes,{},2339496.0,2557144.0,217648.0
+go_memstats_heap_idle_bytes,{},62496768.0,62488576.0,-8192.0
+go_memstats_heap_inuse_bytes,{},4120576.0,4030464.0,-90112.0
+go_memstats_heap_objects,{},18429.0,22241.0,3812.0
+go_memstats_heap_released_bytes,{},62021632.0,61939712.0,-81920.0
+go_memstats_heap_sys_bytes,{},66617344.0,66519040.0,-98304.0
+go_memstats_last_gc_time_seconds,{},1693110277.6676903,1693110275.4116764,-2.256013870239258
+go_memstats_mallocs_total,{},159355.0,155208.0,-4147.0
+go_memstats_mspan_inuse_bytes,{},104992.0,88808.0,-16184.0
+go_memstats_other_sys_bytes,{},1374128.0,1321288.0,-52840.0
+go_memstats_stack_inuse_bytes,{},491520.0,589824.0,98304.0
+go_memstats_stack_sys_bytes,{},491520.0,589824.0,98304.0
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.auto_increment.columns'},0.107229842,0.109007217,0.0017773749999999977
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.binlog_size'},0.110692753,0.123348332,0.012655579
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.global_status'},0.029803985,0.012205617,-0.017598368000000003
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.global_variables'},0.050457413,0.051213505,0.0007560919999999999
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.info_schema.innodb_cmp'},0.108136189,0.014471492,-0.09366469699999999
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.info_schema.innodb_cmpmem'},0.01096032,0.054235215,0.043274895
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.info_schema.innodb_metrics'},0.073562376,0.129797953,0.056235576999999995
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.info_schema.processlist'},0.054888299,0.126112545,0.07122424599999999
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.info_schema.query_response_time'},0.001252107,0.000508332,-0.0007437749999999999
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.perf_schema.tablelocks'},0.069489298,0.141985398,0.07249610000000001
+mysql_exporter_collector_duration_seconds,{'collector': 'collect.slave_status'},0.110182119,0.144043527,0.03386140800000001
+mysql_exporter_collector_duration_seconds,{'collector': 'connection'},0.009926765,0.003682282,-0.006244483
+mysql_exporter_scrapes_total,{},6.0,7.0,1.0
+mysql_global_status_aborted_clients,{},4.0,0.0,-4.0
+mysql_global_status_buffer_pool_dirty_pages,{},276.0,400.0,124.0
+mysql_global_status_buffer_pool_page_changes_total,{'operation': 'flushed'},1043.0,787.0,-256.0
+mysql_global_status_buffer_pool_pages,{'state': 'data'},1496.0,1499.0,3.0
+mysql_global_status_buffer_pool_pages,{'state': 'free'},6683.0,6681.0,-2.0
+mysql_global_status_buffer_pool_pages,{'state': 'misc'},13.0,12.0,-1.0
+mysql_global_status_bytes_received,{},83242.0,84617.0,1375.0
+mysql_global_status_bytes_sent,{},3758607.0,552426.0,-3206181.0
+mysql_global_status_commands_total,{'command': 'admin_commands'},15.0,5.0,-10.0
+mysql_global_status_commands_total,{'command': 'select'},40.0,38.0,-2.0
+mysql_global_status_commands_total,{'command': 'set_option'},22.0,16.0,-6.0
+mysql_global_status_commands_total,{'command': 'show_master_status'},0.0,1.0,1.0
+mysql_global_status_commands_total,{'command': 'show_variables'},3.0,4.0,1.0
+mysql_global_status_connections,{},26.0,14.0,-12.0
+mysql_global_status_created_tmp_tables,{},23.0,33.0,10.0
+mysql_global_status_error_log_latest_write,{},1693110242707685.0,1693110243639278.0,931593.0
+mysql_global_status_handlers_total,{'handler': 'commit'},6644.0,6543.0,-101.0
+mysql_global_status_handlers_total,{'handler': 'external_lock'},20595.0,17405.0,-3190.0
+mysql_global_status_handlers_total,{'handler': 'read_first'},57.0,66.0,9.0
+mysql_global_status_handlers_total,{'handler': 'read_key'},9716.0,8539.0,-1177.0
+mysql_global_status_handlers_total,{'handler': 'read_next'},14294.0,12297.0,-1997.0
+mysql_global_status_handlers_total,{'handler': 'read_rnd'},0.0,100.0,100.0
+mysql_global_status_handlers_total,{'handler': 'read_rnd_next'},9468.0,10179.0,711.0
+mysql_global_status_handlers_total,{'handler': 'rollback'},0.0,1.0,1.0
+mysql_global_status_handlers_total,{'handler': 'write'},5722.0,5810.0,88.0
+mysql_global_status_innodb_buffer_pool_bytes_data,{},24510464.0,24559616.0,49152.0
+mysql_global_status_innodb_buffer_pool_bytes_dirty,{},4521984.0,6553600.0,2031616.0
+mysql_global_status_innodb_buffer_pool_read_requests,{},71303.0,63919.0,-7384.0
+mysql_global_status_innodb_buffer_pool_reads,{},1084.0,1088.0,4.0
+mysql_global_status_innodb_buffer_pool_write_requests,{},19308.0,19298.0,-10.0
+mysql_global_status_innodb_data_fsyncs,{},4521.0,4330.0,-191.0
+mysql_global_status_innodb_data_read,{},17828864.0,17894400.0,65536.0
+mysql_global_status_innodb_data_reads,{},1105.0,1109.0,4.0
+mysql_global_status_innodb_data_writes,{},6454.0,6170.0,-284.0
+mysql_global_status_innodb_data_written,{},21107712.0,16933888.0,-4173824.0
+mysql_global_status_innodb_dblwr_pages_written,{},901.0,644.0,-257.0
+mysql_global_status_innodb_dblwr_writes,{},231.0,165.0,-66.0
+mysql_global_status_innodb_log_write_requests,{},12796.0,12791.0,-5.0
+mysql_global_status_innodb_log_writes,{},5117.0,5156.0,39.0
+mysql_global_status_innodb_os_log_fsyncs,{},3782.0,3786.0,4.0
+mysql_global_status_innodb_os_log_written,{},3072512.0,3080704.0,8192.0
+mysql_global_status_innodb_pages_created,{},420.0,419.0,-1.0
+mysql_global_status_innodb_pages_read,{},1083.0,1087.0,4.0
+mysql_global_status_innodb_pages_written,{},1043.0,787.0,-256.0
+mysql_global_status_innodb_redo_log_checkpoint_lsn,{},31847047.0,31847029.0,-18.0
+mysql_global_status_innodb_redo_log_current_lsn,{},32978318.0,32978501.0,183.0
+mysql_global_status_innodb_redo_log_flushed_to_disk_lsn,{},32978318.0,32978501.0,183.0
+mysql_global_status_innodb_redo_log_logical_size,{},1131520.0,1132032.0,512.0
+mysql_global_status_innodb_redo_log_uuid,{},2838179556.0,2089986940.0,-748192616.0
+mysql_global_status_innodb_row_ops_total,{'operation': 'inserted'},1011.0,1007.0,-4.0
+mysql_global_status_innodb_row_ops_total,{'operation': 'read'},11.0,7.0,-4.0
+mysql_global_status_innodb_system_rows_inserted,{},603.0,604.0,1.0
+mysql_global_status_innodb_system_rows_read,{},18447.0,16236.0,-2211.0
+mysql_global_status_open_files,{},7.0,6.0,-1.0
+mysql_global_status_open_tables,{},471.0,463.0,-8.0
+mysql_global_status_opened_files,{},7.0,6.0,-1.0
+mysql_global_status_opened_tables,{},552.0,544.0,-8.0
+mysql_global_status_performance_schema_lost_total,{'instrumentation': 'session_connect_attrs_longest_seen'},168.0,53.0,-115.0
+mysql_global_status_queries,{},2137.0,2111.0,-26.0
+mysql_global_status_questions,{},2123.0,2106.0,-17.0
+mysql_global_status_select_scan,{},37.0,47.0,10.0
+mysql_global_status_sort_rows,{},0.0,100.0,100.0
+mysql_global_status_sort_scan,{},0.0,10.0,10.0
+mysql_global_status_table_locks_immediate,{},10.0,11.0,1.0
+mysql_global_status_table_open_cache_hits,{},10081.0,8494.0,-1587.0
+mysql_global_status_table_open_cache_misses,{},552.0,544.0,-8.0
+mysql_global_status_threads_cached,{},0.0,1.0,1.0
+mysql_global_status_threads_connected,{},3.0,2.0,-1.0
+mysql_global_status_threads_running,{},3.0,2.0,-1.0
+mysql_global_variables_server_id,{},1.0,3.0,2.0
+mysql_info_schema_innodb_metrics_adaptive_hash_index_adaptive_hash_searches_btree_total,{},14434.0,14184.0,-250.0
+mysql_info_schema_innodb_metrics_adaptive_hash_index_adaptive_hash_searches_total,{},6049.0,6570.0,521.0
+mysql_info_schema_innodb_metrics_buffer_buffer_data_reads_total,{},17828864.0,17894400.0,65536.0
+mysql_info_schema_innodb_metrics_buffer_buffer_data_written_total,{},21107712.0,16933888.0,-4173824.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pages_created_total,{},422.0,423.0,1.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pages_read_total,{},1083.0,1087.0,4.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pages_written_total,{},1043.0,787.0,-256.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pool_bytes_data,{},24510464.0,24592384.0,81920.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pool_bytes_dirty,{},4521984.0,6602752.0,2080768.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pool_read_requests_total,{},71357.0,71157.0,-200.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pool_reads_total,{},1084.0,1088.0,4.0
+mysql_info_schema_innodb_metrics_buffer_buffer_pool_write_requests_total,{},19353.0,19388.0,35.0
+mysql_info_schema_innodb_metrics_buffer_pool_dirty_pages,{},276.0,403.0,127.0
+mysql_info_schema_innodb_metrics_buffer_pool_pages,{'state': 'data'},1496.0,1501.0,5.0
+mysql_info_schema_innodb_metrics_buffer_pool_pages,{'state': 'free'},6683.0,6679.0,-4.0
+mysql_info_schema_innodb_metrics_buffer_pool_pages,{'state': 'misc'},13.0,12.0,-1.0
+mysql_info_schema_innodb_metrics_dml_dml_system_inserts_total,{},603.0,604.0,1.0
+mysql_info_schema_innodb_metrics_dml_dml_system_reads_total,{},18447.0,21652.0,3205.0
+mysql_info_schema_innodb_metrics_lock_lock_deadlock_rounds_total,{},47.0,46.0,-1.0
+mysql_info_schema_innodb_metrics_lock_lock_schedule_refreshes_total,{},47.0,46.0,-1.0
+mysql_info_schema_innodb_metrics_log_log_write_requests_total,{},12796.0,12791.0,-5.0
+mysql_info_schema_innodb_metrics_log_log_writes_total,{},5117.0,5156.0,39.0
+mysql_info_schema_innodb_metrics_os_os_data_fsyncs_total,{},4521.0,4330.0,-191.0
+mysql_info_schema_innodb_metrics_os_os_data_reads_total,{},1105.0,1109.0,4.0
+mysql_info_schema_innodb_metrics_os_os_data_writes_total,{},6454.0,6170.0,-284.0
+mysql_info_schema_innodb_metrics_os_os_log_bytes_written_total,{},3072512.0,3080704.0,8192.0
+mysql_info_schema_innodb_metrics_os_os_log_fsyncs_total,{},3782.0,3786.0,4.0
+mysql_info_schema_innodb_metrics_server_innodb_activity_count_total,{},1545.0,1548.0,3.0
+mysql_info_schema_innodb_metrics_server_innodb_dblwr_pages_written_total,{},901.0,644.0,-257.0
+mysql_info_schema_innodb_metrics_server_innodb_dblwr_writes_total,{},231.0,165.0,-66.0
+mysql_info_schema_innodb_metrics_transaction_trx_rseg_history_len,{},2.0,7.0,5.0
+mysql_info_schema_threads,{'state': 'idle'},1.0,2.0,1.0
+mysql_info_schema_threads,{'state': 'replication master'},1.0,0.0,-1.0
+mysql_info_schema_threads_seconds,{'state': 'idle'},5.0,4.0,-1.0
+mysql_info_schema_threads_seconds,{'state': 'other'},47.0,46.0,-1.0
+mysql_info_schema_threads_seconds,{'state': 'replication master'},31.0,0.0,-31.0
+mysql_perf_schema_external_lock_waits_seconds_total,"{'name': 'table_0', 'schema': 'test', 'operation': 'write'}",0.0003367944,0.00020626917,-0.00013052523
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'name': 'table_1', 'operation': 'write'}",0.00030124098,0.00024948642,-5.175456000000003e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'name': 'table_2', 'operation': 'write'}",0.00033432534,0.00038406672,4.974138000000001e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'name': 'table_3', 'operation': 'write'}",0.00025945053,0.00021708675,-4.236377999999999e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'operation': 'write', 'name': 'table_4'}",0.00034282176,0.0002879439,-5.4877859999999975e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'operation': 'write', 'schema': 'test', 'name': 'table_5'}",0.00042306099,0.00032678331,-9.627768000000002e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'operation': 'write', 'name': 'table_6'}",0.00033403215,0.00057621579,0.00024218364000000003
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'operation': 'write', 'name': 'table_7'}",0.00027059175,0.00033612798,6.553622999999999e-05
+mysql_perf_schema_external_lock_waits_seconds_total,"{'schema': 'test', 'name': 'table_8', 'operation': 'write'}",0.00028335552,0.00029033814,6.982620000000011e-06
+mysql_perf_schema_external_lock_waits_seconds_total,"{'name': 'table_9', 'schema': 'test', 'operation': 'write'}",0.0003350022,0.00060370953,0.00026870732999999996
+process_cpu_seconds_total,{},1.48,1.33,-0.1499999999999999
+process_resident_memory_bytes,{},16318464.0,16277504.0,-40960.0
+process_start_time_seconds,{},1693110201.44,1693110201.02,-0.4200000762939453
