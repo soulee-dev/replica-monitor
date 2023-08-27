@@ -7,6 +7,7 @@ down:
 up:
 	@echo "Running docker-compose up..."
 	docker-compose up -d
+	sleep 5
 
 test:
 	@echo "Running main.py..."
