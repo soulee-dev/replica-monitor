@@ -5,10 +5,20 @@ from pymyexporter import PyMyExporter
 import logging as log
 import pandas as pd
 from pymysqlreplication import BinLogStreamReader
+import time
+# import tqdm
 
 mysql_master_config = {
     'host': 'localhost',
     'port': 3306,
+    'user': 'root',
+    'password': '',
+    'database': 'test'
+}
+
+mysql_slave_config = {
+    'host': 'localhost',
+    'port': 3307,
     'user': 'root',
     'password': '',
     'database': 'test'
@@ -22,8 +32,33 @@ mysql_master2_config = {
     'database': 'test'
 }
 
-master_conn = pymysql.connect(**mysql_master_config)
-master2_conn = pymysql.connect(**mysql_master2_config)
+MAX_RETRIES = 5
+RETRY_DELAY = 5
+
+master_conn = None
+slave_conn = None
+master2_conn = None
+
+for attempt in range(MAX_RETRIES):
+    try:
+        master_conn = pymysql.connect(**mysql_master_config)
+        slave_conn = pymysql.connect(**mysql_slave_config)
+        master2_conn = pymysql.connect(**mysql_master2_config)
+    except pymysql.MySQLError as e:
+        if attempt < MAX_RETRIES - 1:
+            log.info(f"Connection failed. Retrying in {RETRY_DELAY} seconds...")
+            time.sleep(RETRY_DELAY)
+        else:
+            if master_conn:
+                master_conn.close()
+            if slave_conn:
+                slave_conn.close()
+            if master2_conn:
+                master2_conn.close()
+            raise Exception("Failed to connect to MySQL")
+
+# close unnecessary connections
+slave_conn.close()
 
 master_cursor = master_conn.cursor()
 master2_cursor = master2_conn.cursor()
@@ -102,7 +137,9 @@ if __name__ == "__main__":
     metrics1 = master_exporter.get_metrics()
     metrics2 = master2_exporter.get_metrics()
     df_changed_summary = pd.DataFrame(diff_metrics(metrics1, metrics2))
-    df_changed_summary.to_csv("diff_metric.csv", index=False)
+    df_changed_summary.to_csv("diff_metrics.csv", index=False)
+
+    print("Done!")
 
     # close cursors and connections
     master_cursor.close()
