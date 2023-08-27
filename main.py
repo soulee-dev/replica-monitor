@@ -34,7 +34,7 @@ mysql_master2_config = {
     'database': 'test'
 }
 
-MAX_RETRIES = 5
+MAX_RETRIES = 10
 RETRY_DELAY = 5
 
 master_conn = None
@@ -70,8 +70,6 @@ master2_cursor = master2_conn.cursor()
 def execute_sql(sql):
     master_cursor.execute(sql)
     master2_cursor.execute(sql)
-    master_conn.commit()
-    master2_conn.commit()
 
 
 def create_table(num_tables, num_columns_per_table):
@@ -93,6 +91,8 @@ def insert_data(num_tables, num_columns_per_table, num_rows_per_table):
 
         insert_sql = f"INSERT INTO {random_table} ({random_column}) VALUES ('{random_string()}')"
         execute_sql(insert_sql)
+        master_conn.commit()
+        master2_conn.commit()
 
 
 def convert_to_dict(data):
@@ -108,9 +108,11 @@ def diff_metrics(metrics1, metrics2):
         {
             "metric_name": key[0],
             "labels": dict(key[1]),
-            "metric1_value": values[0],
-            "metric2_value": values[1],
-            "difference": values[1] - values[0]
+            "metric1": values[0],
+            "metric2": values[1],
+            "abs(diff)": abs(values[1] - values[0]),
+            "percent_diff": (values[1] - values[0]) / values[0] * 100 if values[0] != 0 else "N/A",
+            "diff": values[1] - values[0]
         }
         for key, values in changed_metrics.items()
     ]
@@ -120,7 +122,7 @@ def diff_metrics(metrics1, metrics2):
 if __name__ == "__main__":
     NUM_TABLES = 10
     NUM_COLUMNS_PER_TABLE = 10
-    NUM_ROWS_PER_TABLE = 1000
+    NUM_ROWS_PER_TABLE = 10000
 
     master_exporter = PyMyExporter(mysql_master_config['host'], 9104)
     master2_exporter = PyMyExporter(mysql_master2_config['host'], 9105)
