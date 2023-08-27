@@ -9,7 +9,7 @@ up:
 	docker-compose up -d
 
 test:
-	@echo "Running test.py..."
-	python3 test.py
+	@echo "Running main.py..."
+	python3 main.py
 
 .PHONY: all down up test
